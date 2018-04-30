@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <title>Sistema</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+       
+        <link rel="stylesheet" href="css/menuStyle.css"/> 
+        
+    </h:head>    
+
+    <body>
+        <!-- MENU HORIZONTAL -->
+        <nav id="menu">
+            <ul>
+                <li><a href="/ProjetoPrimeFaces2/index.xhtml">Tela Inicial</a></li>
+                <li><a href="../paginas/telaCadastroPessoa.xhtml">Cadastro Pessoa</a></li>
+                <li><a href="../paginas/telaListagemPessoa.xhtml">Listagem Pessoa</a></li>
+                <li><a href="/ProjetoPrimeFaces2/paginas/telaLancamentoNota.xhtml">Lancamento Nota</a></li>
+
+                <li><a href="#">SAIR</a></li>
+            </ul>
+        </nav> 
+        <!-- MENU GERAL-->
+        <!--
+        <div class="dropdown">
+          <span style="color : white;  padding: 2px 10px; background-color: blue">Menu Geral</span>
+          <div class="dropdown-content">
+                  <ul>
+                     <li><a href="/PrimeiroCrudJSF/index.xhtml">Tela Inicial</a></li>
+                     <li><a href="/PrimeiroCrudJSF/paginas/telaCadastroPessoa.xhtml">Cadastro Pessoa</a></li>
+                  </ul>
+          </div>
+        </div> -->
+
+        <div>
+            <ui:insert name="corpo"/>
+        </div>
+
+        <div>
+            <ui:insert name="rodape"/>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/template/template.xhtml">
+
+	<!--
+		este bloco e responsavel por chamar o meto inicializarTela
+		da classe pessoaControladora sempre que esta tela for carregada
+		ou recarregada (como em um F5), obrigatoriamente deve esta 
+		entre ui:composition e  ui:define como no exemplo 
+	-->
+	<f:metadata>
+            <f:viewAction action="#{Pessoa.inicializarTela}" />
+	</f:metadata>
+
+	<ui:define name="corpo">
+
+
+		<h1>Pagina Listagem</h1>
+		<h:form>
+			<h:dataTable styleClass="tabela"
+                                     value="#{Pessoa.pessoas}" var="pessoa">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Codigo" />
+					</f:facet>
+                                    <h:outputText value="#{pessoa.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nome" />
+					</f:facet>
+					<h:outputText value="#{pessoa.nome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CPF" />
+					</f:facet>
+					<h:outputText value="#{pessoa.CPF}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Email" />
+					</f:facet>
+					<h:outputText value="#{pessoa.email}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Acao" />
+					</f:facet>
+					<h:commandButton action="#{pessoaControladora.editar(pessoa)}"
+						value="Ediar" />
+					
+                                        <h:commandButton action="#{Pessoa.excluirPessoa(pessoa)}"
+						style="margin-left : 10px" value="Excluir" />
+				</h:column>
+
+			</h:dataTable>
+
+			<br />
+			<br />
+			<h:commandButton
+				action="#{pessoaControladora.navegarTelaCadastroPessoa}"
+				value="Voltar Cadastro Pessoa" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

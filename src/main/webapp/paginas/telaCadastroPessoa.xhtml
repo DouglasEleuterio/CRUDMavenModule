@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:composition template="/template/template.xhtml">
+	
+	
+	<ui:define name="corpo">
+	
+		<h1>Pagina Cadastro</h1>
+		<h:form id="formulario">
+			<h:messages  />
+			<br/>
+			<br/>
+			Codigo:
+			<br/>
+                        <h:inputText value="#{Pessoa.pessoa.id}" />
+			<br/>
+			Nome:
+			<br/>
+			<h:inputText value="#{Pessoa.pessoa.nome}" required="true" requiredMessage="Nome Obrigatorio" />
+			<br/>
+			Email:
+			<br/>
+			<h:inputText value="#{Pessoa.pessoa.email}" />
+			<br/>
+			CPF:
+			<br/>
+			<h:inputText value="#{Pessoa.pessoa.CPF}" required="true" requiredMessage="CPF Obrigatorio" />
+		<br/><br/>
+                <h:commandButton action="#{Pessoa.salvarPessoa()}" value="Salvar Pessoa" />
+			
+		<br/><br/>
+			<h:commandButton action="#{pessoaControladora.navegarTelaListagemPessoa}" immediate="true" value="Listagem Pessoas" />
+		</h:form>
+		
+	</ui:define>
+	</ui:composition>
+</html>

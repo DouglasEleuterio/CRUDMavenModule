@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="/template/template.xhtml">
+	
+	<f:metadata>
+		<f:viewAction action="#{lancamentoNotaControladora.inicializarTela}" />
+	</f:metadata>
+	
+	
+	<ui:define name="corpo">
+	
+		<h1>Pagina Lancamento Nota</h1>
+		<h:form id="formulario">
+			
+			<p:inputText id="inputPessoa" readonly="true" value="#{lancamentoNotaControladora.pessoaSelecionada.nome}"/>
+			<p:commandButton icon="ui-icon-search" style="height : 30px" action="#{lancamentoNotaControladora.listarPessoas}" 
+				oncomplete="PF('modalPessoa').show();" />
+			<br/>
+			Nota:
+			<br/>
+			<p:inputText id="inputValorNota" value="#{lancamentoNotaControladora.nota.valor}" />
+			<br/>
+			<br/>
+			<p:commandButton value="Adicionar" action="#{lancamentoNotaControladora.adicionarNota}" update=":formulario:inputValorNota" />
+		
+		
+			<!-- criar uma tabela para exibir todas as notas que ja foram adicionadas na pessoaSelecionada -->
+		
+		</h:form>
+		
+		<p:dialog header="Listagem Pessoas" widgetVar="modalPessoa" modal="true" 
+			height="300" width="700">
+
+			<p:dataTable id="tabelaPessoas" var="pessoa" value="#{lancamentoNotaControladora.pessoas}">
+		        <f:facet name="header">
+		            Pessoas
+		        </f:facet>
+		        <p:column headerText="codigo">
+		            <h:outputText value="#{pessoa.codigo}"/>
+		        </p:column>
+		         <p:column headerText="nome">
+		            <h:outputText value="#{pessoa.nome}"/>
+		        </p:column>
+		         <p:column headerText="cpf">
+		            <h:outputText value="#{pessoa.cpf}"/>
+		        </p:column>
+		         <p:column headerText="email" >
+		            <h:outputText value="#{pessoa.email}"/>
+		        </p:column>
+		        
+		        <p:column headerText="Ação" style="text-align: center">
+		            <p:commandButton icon="ui-icon-circle-check"  
+		            	action="#{lancamentoNotaControladora.selecionarPessoa(pessoa)}" 
+		            	oncomplete="PF('modalPessoa').hide();"
+		            	update=":formulario:inputPessoa"/>
+		        </p:column>
+		    </p:dataTable>
+		    
+		</p:dialog> 
+		
+	</ui:define>
+	</ui:composition>
+</html>
